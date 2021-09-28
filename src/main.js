@@ -1,37 +1,51 @@
-// @ts-check
-// Formatting, linting
-// Formatting: prettier
-// Linting: ESLint
-// Type checking: TypeSctipt
+const ary = [1, 2, 3, 4, 5]
 
-// const http = require('http')
+const [head, ...rest] = ary
 
-// const server = http.createServer((req, res) => {
-//   res.statusCode = 200
-//   res.end('Hello!')
-// })
+//console.log(head, rest)
+//console.log(head, ...rest)
 
-// const PORT = 4000
-// server.listen(PORT, () => {
-//   console.log(`The server is listening at port: ${PORT}.`)
-// })
-
-var numCounters = 0
-
-function getCounter() {
-  numCounters += 1
-
-  var result = { conunt: count, total: 0 }
-  function count() {
-    result.total += 1
-  }
-  return result
+const personalData = {
+  email: 'asdqwer@asd.com',
+  password: '*******',
 }
 
-var counterA = getCounter()
-counterA.conunt()
-counterA.conunt()
-var counterB = getCounter()
-counterB.conunt()
+const publicData = {
+  nickname: 'foo',
+}
 
-console.log(counterA.total, counterB.total, numCounters)
+const whitakerData = {
+  type: 'enterprise',
+}
+
+const overrides = {
+  email: '123d@asdas.com',
+}
+
+const shouldOverride = true
+
+const user = {
+  ...personalData,
+  ...publicData,
+  ...whitakerData,
+  ...overrides,
+  ...{
+    email: 'vvvv@vvv.com',
+    password: '******',
+  },
+  ...(shouldOverride
+    ? {
+        email: '123d@asdas.com',
+      }
+    : null),
+}
+
+console.log(user)
+
+// function
+function foo(head, ...rest) {
+  console.log(head)
+  console.log(rest)
+}
+
+foo(1, 2, 3, 4)
